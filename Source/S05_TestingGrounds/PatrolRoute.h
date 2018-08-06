@@ -6,24 +6,21 @@
 #include "Components/ActorComponent.h"
 #include "PatrolRoute.generated.h"
 
-
+/**
+* A "route card" to help AI choose their next waypoint
+*/
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class S05_TESTINGGROUNDS_API UPatrolRoute : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	UPatrolRoute();
+public:
+	TArray<AActor*> GetPatrolPoints() const;
 
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+private:
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
+	UPROPERTY(EditInstanceOnly, Category = "Patrol Route")
+	TArray<AActor*> PatrolPoints;
 		
 	
 };
